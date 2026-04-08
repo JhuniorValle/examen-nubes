@@ -2,14 +2,11 @@ from flask import Flask, render_template, request, redirect
 import psycopg2
 import os
 
-app = Flask(__name__)
-
-
-DATABASE_URL = os.environ.get("postgresql://examen_db_nrgn_user:eMTLN7VcgZAxVr8M4qIVnBwLh7v61C8u@dpg-d7b7vu4hg0os73ab7qb0-a.virginia-postgres.render.com/examen_db_nrgn")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 conn = psycopg2.connect(DATABASE_URL)
 
-# crear tabla automáticamente
+
 cursor = conn.cursor()
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS personas (
